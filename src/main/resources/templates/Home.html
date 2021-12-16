@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Covid Traking App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <h1>Covid Tracking App</h1>
+    <h5>This application lists the current number of covid cases in all over the globe</h5>
+    <div class="jumbotron">
+        <h1 class="display-4" th:text="${totslCases}"></h1>
+        <h3>Total cases reported as of today</h3>
+    </div>
+
+    <table class="table" style="display: block; overflow-y: scroll; height: 400px">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">STATE</th>
+            <th scope="col">COUNTRY</th>
+            <th scope="col">CONFIRM CASES</th>
+            <th scope="col">DIFFERENCE IN CASES FROM YESTERDAY</th>
+
+        </tr>
+        </thead>
+<!--    </table>-->
+<!--        <table class="table table-striped" style="display: block; overflow-y: scroll; height: 500px">-->
+        <tbody >
+        <tr th:each="locationStat,index: ${locationStats}">
+            <th th:text="${index.count}"  scope="row"></th>
+            <td th:text="${locationStat.state}"></td>
+            <td th:text="${locationStat.country}"></td>
+            <td th:text="${locationStat.covidCase}"></td>
+            <td th:text="${locationStat.differenceInCasesFromPreviousDay}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
